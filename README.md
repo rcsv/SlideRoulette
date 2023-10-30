@@ -4,6 +4,8 @@
 
 ## Features
 
+<img style="float:right;" src="Roulette-Demo.gif" />
+
 - **Randomize Slides**: Start a roulette effect that randomize the slide order.
 - **Unique Presentations**: Each presentation becomes a new experience as slides are shown in different orders.
 - **Sound Effects**: Engage your audience further with roulette-start, roulette-stop, and final-sound effects.
