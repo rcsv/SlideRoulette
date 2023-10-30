@@ -51,14 +51,14 @@ Public Const SND_ASYNC = &H1
 Public Const SND_FILENAME = &H20000
 
 ' Global variables.
-Public TimerID As LongPtr
-Public StopTimerID As LongPtr
-Public Running As Boolean
-Public IncreaseDelay As Boolean
-Public Delay As Long
+Private TimerID As LongPtr
+Private StopTimerID As LongPtr
+Private Running As Boolean
+Private IncreaseDelay As Boolean
+Private Delay As Long
 
 ' Store slide indices that were already displayed.
-Public SelectedSlides As Collection
+Private SelectedSlides As Collection
 
 '
 ' ENTRY POINT : 1 - StartRoulette
@@ -91,7 +91,7 @@ Public Sub StopRoulette()
   On Error GoTo 0
 End Sub
 
-Public Sub TimerProc(ByVal hWnd As Long, ByVal uMsg As Long, _
+Private Sub TimerProc(ByVal hWnd As Long, ByVal uMsg As Long, _
     ByVal nIDEvent As Long, ByVal dwTime As Long)
     ' Function to be called at regular intervals. Determines which slide to show next.
 
@@ -111,7 +111,7 @@ Public Sub TimerProc(ByVal hWnd As Long, ByVal uMsg As Long, _
   End If
 End Sub
 
-Public Sub StopTimerProc(ByVal hWnd As Long, ByVal uMsg As Long, _
+Private Sub StopTimerProc(ByVal hWnd As Long, ByVal uMsg As Long, _
   ByVal nIDEvent As Long, ByVal dwTime As Long)
   ' Function to stop the timer
 
@@ -132,7 +132,7 @@ Public Sub ResetHistory()
   Set Selected Slides = Nothing
 End Sub
 
-Public Function IsInSelectedSlides(ByVal slideIndex As Integer) As Boolean
+Private Function IsInSelectedSlides(ByVal slideIndex As Integer) As Boolean
   ' Check if a slide index is in the SelectedSlides collection.
 
   Dim slide As Variant
