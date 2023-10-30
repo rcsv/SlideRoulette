@@ -15,21 +15,28 @@
 ### 1. **Setup**
 
 * Import the provided `.bas` file into your PowerPoint's VisualBasic for Applications (VBA) environment.
-* Encure that you've set the appropriate path to your sound files within the `soundpath` constant in the imported module.
+* Ensure that you've set the appropriate path to your sound files within the `soundpath` constant in the imported module.
+
+### 2. Save as Macro-Enabled Presentation
+
+Before integrating SlideRoulette functionalities, make sure to save your PowerPoint presentation in a macro-enabled format. This will ensure that all the VBA functionalities are retained.
+
+- Click on **`File`** in the top left corner.
+- Navigate to **`Save As`**.
+- From the dropdown, select the location you want to save to.
+- In the "Save as type" dropdown, choose **'PowerPoint Macro-Enabled Presentation (*.pptm)'**.
+- Click **`Save`**.
 
 ### 2. Integrate with Your Presentation
-
 For seamless usage of **SlideRoulette**, you will need to create three buttons within your PowerPoint slides:
 
 #### Start Roulette Button:
-
 Triggers the roulette process, shuffling through slides randomly.
 
 #### Stop Roulette Button:
 Halts the roulette process, landing on a slide for the presentation.
 
 #### Reset History Button:
-
 Clears the history of slides that have been landed on by the roulette. This is especially useful if you're planning to run the roulette multiple times within a single presentation sesion.
 
 ##### Creating Buttons:
