@@ -8,12 +8,39 @@
 - **Unique Presentations**: Each presentation becomes a new experience as slides are shown in different orders.
 - **Sound Effects**: Engage your audience further with roulette-start, roulette-stop, and final-sound effects.
 
-## How to use
+## How to use SlideRoulette
 
-1. **Setup**: Download the VBA module and integrate it into your PowerPoint presentation file. (Save as *.pptm)
-2. **Start Roulette**: Trigger the roulette effect to start randomizing the slides.
-3. **Stop Roulette**: Stop the roulette effect to land on a specific slide.
-4. **Restart**: Initiate the effect again for another round of surprise.
+### 1. **Setup**
+
+* Import the provided `.bas` file into your PowerPoint's VisualBasic for Applications (VBA) environment.
+* Encure that you've set the appropriate path to your sound files within the `soundpath` constant in the imported module.
+
+### 2. Integrate with Your Presentation
+
+For seamless usage of **SlideRoulette**, you will need to create three buttons within your PowerPoint slides:
+
+#### Start Roulette Button:
+
+Triggers the roulette process, shuffling through slides randomly.
+
+#### Stop Roulette Button:
+Halts the roulette process, landing on a slide for the presentation.
+
+#### Reset History Button:
+
+Clears the history of slides that have been landed on by the roulette. This is especially useful if you're planning to run the roulette multiple times within a single presentation sesion.
+
+##### Creating Buttons:
+
+1. **Navigate** to the slide where you'd like to place the buttons.
+2. **Go** to **`Insert`** > **`Shapes`** > **`Action Buttons`** and choose a button shape that fits your presentation style.
+3. **Draw** the button on the slide.
+4. **Assign Macro**: After placing the button, a dialog box should pop up. Assign the corresponding macro (**`StartRoulette`**, **`StopRoulette`**, or **`ResetHistory`**) to the button.
+5. **Label**: Optionally, you can right-click on the button to edit text and label it accordingly.
+
+### 3. Run Your Presentation
+
+Once your buttons are in place and the macros are imported, start your slideshow. Use the **Start** and **Stop** buttons as needed during your presentation. If you wish to clear the history and re-run the roulette, simply click the **Reset History** button.
 
 ## Requirements
 - Microsoft PowerPoint (Version 2019 or later)
