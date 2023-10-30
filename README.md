@@ -27,7 +27,7 @@ Before integrating SlideRoulette functionalities, make sure to save your PowerPo
 - In the "Save as type" dropdown, choose **'PowerPoint Macro-Enabled Presentation (*.pptm)'**.
 - Click **`Save`**.
 
-### 2. Integrate with Your Presentation
+### 3. Integrate with Your Presentation
 For seamless usage of **SlideRoulette**, you will need to create three buttons within your PowerPoint slides:
 
 #### Start Roulette Button:
@@ -47,7 +47,7 @@ Clears the history of slides that have been landed on by the roulette. This is e
 4. **Assign Macro**: After placing the button, a dialog box should pop up. Assign the corresponding macro (**`StartRoulette`**, **`StopRoulette`**, or **`ResetHistory`**) to the button.
 5. **Label**: Optionally, you can right-click on the button to edit text and label it accordingly.
 
-### 3. Run Your Presentation
+### 4. Run Your Presentation
 
 Once your buttons are in place and the macros are imported, start your slideshow. Use the **Start** and **Stop** buttons as needed during your presentation. If you wish to clear the history and re-run the roulette, simply click the **Reset History** button.
 
