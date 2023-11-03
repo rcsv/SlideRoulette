@@ -8,16 +8,28 @@ Public Const FirstSlideIndex As Integer = 3
 ' Timer constants:
 Public Const InitialDelay As Integer = 100
 Public Const SlowdownTimeInterval As Integer = 2000
+Public Const TimerDelayIncrease As Integer = 100
+
+' Sound file names:
+Private Const SoundButtonClick As String = "button-click.wav"
+Private Const SoundDrumroll As String = "drumroll.wav"
+Private Const SoundFanfare As String = "fanfare.wav"
+
+' TextBox Name
+Private Const TextBoxName_StopSlides As String = "StoppedSlideNumbers"
 
 ' Window API functions for timer and sound:
 Public Declare PtrSafe Function SetTimer Lib "user32" (ByVal hWnd As LongPtr, ByVal nIDEvent As LongPtr, ByVal uElapse As Long, ByVal lpTimerFunc As LongPtr) As LongPtr
 Public Declare PtrSafe Function KillTimer Lib "user32" (ByVal hWnd As LongPtr, ByVal nIDEvent As LongPtr) As Integer
+Public Declare PtrSafe Function PlaySound Lib "winmm.dll" Alias "PlaySoundA" (ByVal lpszName As String, ByVal hModule As LongPtr, ByVal dwFlags As Long) As Long
 
 Private TimerID As LongPtr
 Private StopTimerID As LongPtr
 Private Running As Boolean
 Private IncreaseDelay As Boolean
 Private Delay As Long
+
+Private Const EnableSound As Boolean = True
 
 Private SelectedSlides As Collection
 
@@ -38,12 +50,25 @@ Public Sub StartRoulette()
         Exit Sub
     End If
 
+    If EnableSound Then
+        PlaySound ActivePresentation.Path & "\" & SoundButtonClick, 0&, SND_SYNC Or SND_FILENAME
+    End If
+
     Delay = InitialDelay
     TimerID = SetTimer(0&, 0&, Delay, AddressOf TimerProc)
+
+    If EnableSound Then
+        PlaySound ActivePresentation.Path & "\" & SoundDrumroll, 0&, SND_ASYNC Or SND_FILENAME
+    End If
 End Sub
 
 Public Sub StopRoulette()
     If Not Running Then Exit Sub
+
+    If EnableSound Then
+        PlaySound ActivePresentation.Path & "\" & SoundButtonClick, 0&, SND_ASYNC Or SND_FILENAME
+    End If
+
     IncreaseDelay = True
     StopTimerID = SetTimer(0&, 0&, SlowdownTimeInterval, AddressOf StopTimerProc)
 End Sub
@@ -62,7 +87,7 @@ Private Sub TimerProc(ByVal hWnd As Long, ByVal uMsg As Long, ByVal nIDEvent As 
     End With
 
     If IncreaseDelay Then
-        Delay = Delay + 100
+        Delay = Delay + TimerDelayIncrease
         KillTimer 0&, TimerID
         TimerID = SetTimer(0&, 0&, Delay, AddressOf TimerProc)
     End If
@@ -73,6 +98,10 @@ Private Sub StopTimerProc(ByVal hWnd As Long, ByVal uMsg As Long, ByVal nIDEvent
     KillTimer 0&, StopTimerID
     Running = False
     IncreaseDelay = False
+
+    If EnableSound Then
+        PlaySound ActivePresentation.Path & "\" & SoundFanfare, 0&, SND_ASYNC Or SND_FILENAME
+    End If
 
     Dim CurrentSlideIndex As Integer
     With ActivePresentation.SlideShowWindow.View
@@ -111,12 +140,12 @@ Private Function GetSlideNumberTextBox(Optional ByVal slideNumber As Integer = I
     Set sl = ActivePresentation.Slides(slideNumber)
 
     On Error Resume Next
-    Set shp = sl.Shapes("StoppedSlideNumbers")
+    Set shp = sl.Shapes(TextBoxName_StopSlides)
     On Error GoTo 0
 
     If shp Is Nothing Then
         Set shp = sl.Shapes.AddTextbox(Orientation:=msoTextOrientationHorizontal, Left:=100, Top:=100, Width:=400, Height:=300)
-        shp.Name = "StoppedSlideNumbers"
+        shp.Name = TextBoxName_StopSlides
     End If
 
     Set GetSlideNumberTextBox = shp
