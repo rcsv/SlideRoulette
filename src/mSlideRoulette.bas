@@ -1,19 +1,25 @@
 Option Explicit
 
 ' Constants for special slides:
-Public Const TitleSlideIndex As Integer = 1
-Public Const InstructionSlideIndex As Integer = 2
-Public Const FirstSlideIndex As Integer = 3
+Private Const TitleSlideIndex As Integer = 1
+Private Const InstructionSlideIndex As Integer = 2
+Private Const FirstSlideIndex As Integer = 3
 
-' Timer constants:
-Public Const InitialDelay As Integer = 100
-Public Const SlowdownTimeInterval As Integer = 2000
-Public Const TimerDelayIncrease As Integer = 100
+' Toggle switch to enable single button start/stop functionality:
+Private Const EnableToggleSwitch As Boolean = True
+
+' Toggle switch to enable sound playing: required preparing three .wav files listed below.
+Private Const EnableSound As Boolean = False
 
 ' Sound file names:
 Private Const SoundButtonClick As String = "button-click.wav"
 Private Const SoundDrumroll As String = "drumroll.wav"
 Private Const SoundFanfare As String = "fanfare.wav"
+
+' Timer constants:
+Private Const InitialDelay As Integer = 100
+Private Const SlowdownTimeInterval As Integer = 2000
+Private Const TimerDelayIncrease As Integer = 100
 
 ' TextBox Name
 Private Const TextBoxName_StopSlides As String = "StoppedSlideNumbers"
@@ -29,9 +35,6 @@ Private Running As Boolean
 Private IncreaseDelay As Boolean
 Private Delay As Long
 
-' Toggle switch for enables playing sounds: required preparing three .wav files listed above.
-Private Const EnableSound As Boolean = False
-
 Private Const SND_SYNC As Long = &H0
 Private Const SND_ASYNC As Long = &H1
 Private Const SND_FILENAME As Long = &H20000
@@ -39,7 +42,13 @@ Private Const SND_FILENAME As Long = &H20000
 Private SelectedSlides As Collection
 
 Public Sub StartRoulette()
-    If Running Then Exit Sub
+
+    ' start/stop
+    If EnableToggleSwitch And Running Then
+        StopRoulette
+        Exit Sub
+    End If
+    
     Running = True
 
     If SelectedSlides Is Nothing Then
@@ -161,9 +170,8 @@ Public Sub AddSlideNumberToSecondSlide(Optional ByVal slideNumber As Integer = I
     Set shp = GetSlideNumberTextBox()
 
     If shp.TextFrame.TextRange.Text = "" Then
-        shp.TextFrame.TextRange.Text = CStr(slideNumber)
+        shp.TextFrame.TextRange.Text = CStr(slideNumber) - 1
     Else
-        shp.TextFrame.TextRange.Text = shp.TextFrame.TextRange.Text & ", " & CStr(slideNumber)
+        shp.TextFrame.TextRange.Text = shp.TextFrame.TextRange.Text & ", " & CStr(slideNumber) - 1
     End If
 End Sub
-
