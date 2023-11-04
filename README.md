@@ -4,7 +4,7 @@
 
 ## Features
 
-<img style="float:right;" src="Roulette-Demo.gif" />
+<img align="right" src="Roulette-Demo.gif" />
 
 - **Randomize Slides**: Start a roulette effect that randomizes the slide order.
 - **Unique Presentations**: Each presentation becomes a new experience as slides are shown in different orders.
@@ -58,6 +58,8 @@ If you wish to view which slides have already been displayed, or if your audienc
 To clear the history and re-run the roulette, simply click the **Reset History** button. This will erase the memory of previous selections and allow all slides to be available for random selection again.
 
 ## History Feature Details
+
+<img src="History-Feature.png" align="right" />
 
 **Tracking and Displaying History**: SlideRoulette includes a comprehensive history tracking and display system. This ensures that once a slide has been selected by the roulette, it won't be chosen again during the same session. This feature enhances the randomness by maintaining the thrill of the roulette without repetition. A text box on the second slide automatically updates to show all the selected slide numbers, creating a visual history for the presenter and the audience.
 
