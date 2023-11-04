@@ -29,6 +29,7 @@ Private Running As Boolean
 Private IncreaseDelay As Boolean
 Private Delay As Long
 
+' Toggle switch for enables playing sounds: required preparing three .wav files listed above.
 Private Const EnableSound As Boolean = False
 
 Private Const SND_SYNC As Long = &H0
