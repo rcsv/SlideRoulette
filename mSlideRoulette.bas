@@ -29,7 +29,11 @@ Private Running As Boolean
 Private IncreaseDelay As Boolean
 Private Delay As Long
 
-Private Const EnableSound As Boolean = True
+Private Const EnableSound As Boolean = False
+
+Private Const SND_SYNC As Long = &H0
+Private Const SND_ASYNC As Long = &H1
+Private Const SND_FILENAME As Long = &H20000
 
 Private SelectedSlides As Collection
 
@@ -161,3 +165,4 @@ Public Sub AddSlideNumberToSecondSlide(Optional ByVal slideNumber As Integer = I
         shp.TextFrame.TextRange.Text = shp.TextFrame.TextRange.Text & ", " & CStr(slideNumber)
     End If
 End Sub
+
