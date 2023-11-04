@@ -6,9 +6,11 @@
 
 <img style="float:right;" src="Roulette-Demo.gif" />
 
-- **Randomize Slides**: Start a roulette effect that randomize the slide order.
+- **Randomize Slides**: Start a roulette effect that randomizes the slide order.
 - **Unique Presentations**: Each presentation becomes a new experience as slides are shown in different orders.
 - **Sound Effects**: Engage your audience further with roulette-start, roulette-stop, and final-sound effects.
+- **History Tracking**: SlideRoulette remembers which slides have come up during the roulette, ensuring each slide is only selected once per session.
+- **History Display**: Visually track the order in which slides have been presented with the on-slide display feature, allowing both the presenter and audience to see which slides have already been shown.
 
 ## How to use SlideRoulette
 
@@ -49,7 +51,19 @@ Clears the history of slides that have been landed on by the roulette. This is e
 
 ### 4. Run Your Presentation
 
-Once your buttons are in place and the macros are imported, start your slideshow. Use the **Start** and **Stop** buttons as needed during your presentation. If you wish to clear the history and re-run the roulette, simply click the **Reset History** button.
+Once your buttons are in place and the macros are imported, start your slideshow. Use the **Start** and **Stop** buttons as needed during your presentation. If a slide has been landed on, it will be tracked and excluded from future selections until the **Reset History** button is clicked. This feature ensures every slide gets a chance to be displayed without repeats.
+
+If you wish to view which slides have already been displayed, or if your audience has missed some parts of the presentation, you can use the history display feature. This feature updates a text box on the second slide with the numbers of the slides that have been shown. It serves as a quick reference for both presenter and audience to keep track of the covered content.
+
+To clear the history and re-run the roulette, simply click the **Reset History** button. This will erase the memory of previous selections and allow all slides to be available for random selection again.
+
+## History Feature Details
+
+**Tracking and Displaying History**: SlideRoulette includes a comprehensive history tracking and display system. This ensures that once a slide has been selected by the roulette, it won't be chosen again during the same session. This feature enhances the randomness by maintaining the thrill of the roulette without repetition. A text box on the second slide automatically updates to show all the selected slide numbers, creating a visual history for the presenter and the audience.
+
+**Resetting History**: When the roulette is run multiple times during a session, or when starting a new session, the history can be reset. This clears the previously selected slide numbers, making all slides available for selection once again. The corresponding button can be quickly accessed during the presentation to reset the slide selection process.
+
+For detailed steps on how to utilize these new features, please refer to the updated sections 'Integrate with Your Presentation' and 'Run Your Presentation'.
 
 ## Requirements
 - Microsoft PowerPoint (Version 2019 or later)
@@ -79,6 +93,6 @@ MIT License. See `LICENSE` for more information.
 
 ## Acknowledgements
 
-Special thanks to Rcsvpg for the initial development and to all our contributors for their support.
+- Special thanks to [Rcsvpg](https://github.com/rcsv) for the initial development and to all our contributors for their support.
 
-thank you
+Thank you.
