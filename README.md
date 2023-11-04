@@ -59,7 +59,7 @@ To clear the history and re-run the roulette, simply click the **Reset History**
 
 ## History Feature Details
 
-<img src="History-Feature.png" align="right" width="960" />
+<img src="History-Feature.png" align="right" width="640" />
 
 **Tracking and Displaying History**: SlideRoulette includes a comprehensive history tracking and display system. This ensures that once a slide has been selected by the roulette, it won't be chosen again during the same session. This feature enhances the randomness by maintaining the thrill of the roulette without repetition. A text box on the second slide automatically updates to show all the selected slide numbers, creating a visual history for the presenter and the audience.
 
