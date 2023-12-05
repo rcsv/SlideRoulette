@@ -42,8 +42,9 @@ Private Const SND_FILENAME As Long = &H20000
 Private SelectedSlides As Collection
 
 Public Sub StartRoulette()
+    ' Function to start the slide roulette. If toggle is enabled and already running, it stops the roulette.
 
-    ' start/stop
+    ' Check if roulette is already running when toggle switch is enabled
     If EnableToggleSwitch And Running Then
         StopRoulette
         Exit Sub
@@ -51,26 +52,32 @@ Public Sub StartRoulette()
     
     Running = True
 
+    ' Initialize the collection to store selected slides
     If SelectedSlides Is Nothing Then
         Set SelectedSlides = New Collection
     End If
 
+    ' Calculate the number of slides to be included in the roulette
     Dim MaxNumber As Integer
     MaxNumber = ActivePresentation.Slides.Count - FirstSlideIndex + 1
 
+    ' Check if all slides have already been displayed
     If SelectedSlides.Count >= MaxNumber Then
         MsgBox "All slides have been displayed." & vbCrLf & _
                "To reset the roulette history, please press the 'Reset' button.", vbOKOnly, "Reset Slide Number"
         Exit Sub
     End If
 
+    ' Play button click sound if sound is enabled
     If EnableSound Then
         PlaySound ActivePresentation.Path & "\" & SoundButtonClick, 0&, SND_SYNC Or SND_FILENAME
     End If
 
+    ' Set initial delay for the timer and start the timer
     Delay = InitialDelay
     TimerID = SetTimer(0&, 0&, Delay, AddressOf TimerProc)
 
+    ' Play drumroll sound if sound is enabled
     If EnableSound Then
         PlaySound ActivePresentation.Path & "\" & SoundDrumroll, 0&, SND_ASYNC Or SND_FILENAME
     End If
@@ -79,6 +86,7 @@ End Sub
 Public Sub StopRoulette()
     If Not Running Then Exit Sub
 
+    ' Play button click sound if sound is enabled
     If EnableSound Then
         PlaySound ActivePresentation.Path & "\" & SoundButtonClick, 0&, SND_ASYNC Or SND_FILENAME
     End If
